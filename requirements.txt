@@ -1,0 +1,10 @@
+torch>=1.12
+torch-geometric>=2.3
+numpy>=1.23
+pandas>=1.5
+scipy>=1.9
+scikit-learn>=1.2
+rdkit>=2022.3
+tqdm>=4.64
+# Optional, only for extract_esm2_features.py:
+# fair-esm>=2.0

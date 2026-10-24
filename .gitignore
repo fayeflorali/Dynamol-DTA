@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+runs/
+splits/
+*.pt
+esm2_embedding_*/
+target_contact_map_*/

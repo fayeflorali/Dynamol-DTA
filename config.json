@@ -1,0 +1,74 @@
+{
+  "name": "DynaMol-DTA",
+  "esm_dim": 640,
+  "hidden_dim": 256,
+  "dropout": 0.2,
+  "pocket_mode": "dynamic_pocket",
+  "pocket_ratio": 0.15,
+  "pocket_temperature": 0.5,
+  "gate_floor": 0.5,
+  "pocket_loss_weight": 0.0,
+  "molunet": {
+    "model": {
+      "use_one_hot": false,
+      "embedding_jk": "sum",
+      "hidden_dim": 128,
+      "num_pool_layer": 3,
+      "jump": "all",
+      "jump_weight": 1
+    },
+    "pool": {
+      "cut_norm": true,
+      "threshold": 0.5,
+      "act": "sigmoid",
+      "with_query": false,
+      "lin_bias": false
+    },
+    "MP": {
+      "num_mp_layer": 1,
+      "method": "PNA",
+      "heads": 2,
+      "use_edge": true,
+      "norm": "LayerNorm",
+      "act": "PReLU",
+      "jk": "cat",
+      "act_first": false
+    },
+    "FP": {
+      "query_fp": true,
+      "in_dim": 1489,
+      "hidden_dims": [
+        128,
+        128,
+        128
+      ],
+      "act": "ReLU",
+      "norm": "LayerNorm"
+    },
+    "predict": {
+      "dropout_rate": 0.3,
+      "jk": "cat",
+      "graph_pool": "sum",
+      "pool_first": false
+    },
+    "pretrain": {
+      "dropout_rate": 0.3,
+      "jk": "cat",
+      "graph_pool": "sum",
+      "pred_hidden_dim": 256,
+      "pool_first": false
+    },
+    "GEO": {
+      "heads": 8,
+      "num_mp_layer": 1,
+      "hidden_dim": 128,
+      "reduce": "mean"
+    },
+    "ST": {
+      "heads": 2,
+      "num_seed_points": 4,
+      "num_encoder_blocks": 1,
+      "num_decoder_blocks": 1
+    }
+  }
+}
